@@ -1,0 +1,75 @@
+body {
+    background: linear-gradient(to left, #ffffff 0%, #ffccff 100%);
+    /*background-repeat:  no-repeat;*/
+    font-family: 'Raleway', sans-serif;
+}
+
+.logo {
+    width: 30vw;
+    height: auto;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.img-fluid {
+    max-width: 20%;
+    position: fixed;
+    padding: 20px;
+}
+
+.img-fluid_vrtcl {
+    max-width: 50%;
+    position: fixed;
+}
+
+.slideshow li { 
+  position: absolute;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 20s linear infinite; 
+}
+
+.slideshow { 
+  position: absolute;
+  list-style: none;
+}
+
+.slideshow li:nth-child(2) { 
+  animation-delay: 4s; 
+}
+.slideshow li:nth-child(3) { 
+  animation-delay: 8s; 
+}
+.slideshow li:nth-child(4) { 
+  animation-delay: 12s; 
+}
+.slideshow li:nth-child(5) { 
+  animation-delay: 16s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+
+
