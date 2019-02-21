@@ -14,6 +14,14 @@ app.get("/about", function(req, res){
    res.render("about");
 });
 
+app.get("/twitter", function(req, res){
+   res.render("twitter");
+});
+
+app.get("/send_eMail", function(req, res) {
+    res.render("/send_eMail");
+})
+
 app.get("/travel", function(req, res){
    res.render("travel");
 });

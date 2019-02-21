@@ -1,0 +1,29 @@
+.img-fluid {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.text {
+    color: white;
+    position: absolute;
+    top:30%;
+    font-size: 40px;
+    padding-left: 20px;
+}
+
+/*.arrow {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    margin-right: 10px;*/
+/*    width: 5%;*/
+/*    height: 5%;*/
+/*}*/
