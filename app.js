@@ -1,13 +1,33 @@
 var express     = require("express"),
     app         = express(),
     path        = require("path"),
-    serveStatic = require('serve-static');
+    serveStatic = require('serve-static'),
+    bodyParser  = require("body-parser");
     
+app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(serveStatic(path.join(__dirname, "public")));
 
+var PhotographyComments = [];
+
 app.get("/", function(req, res){
     res.render("landing");
+});
+
+app.get("/photography", function(req, res) {
+   res.render("photography"); 
+});
+
+app.post("/photography", function(req, res) {
+   var author = req.body.author;
+   var comment = req.body.comment;
+   var newComment = {author: author, comment: comment}
+   PhotographyComments.push(newComment);
+   res.render("photography");
+});
+
+app.get("/photography/new", function(req, res) {
+   res.render("new"); 
 });
 
 app.get("/about", function(req, res){
@@ -25,7 +45,6 @@ app.get("/send_eMail", function(req, res) {
 app.get("/travel", function(req, res){
    res.render("travel");
 });
-    
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("Server running"); 

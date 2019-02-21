@@ -4,13 +4,20 @@
 }
 
 .logo_nav {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .text-center {
   position: fixed;
   top: 75%;
   left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.blockquote-footer {
+  position: fixed;
+  top: 85%;
+  left: 73%;
   transform: translateX(-50%) translateY(-50%);
 }
 
@@ -26,7 +33,6 @@
 }
 
 .overlay {
-  border-radius: 5%;
   position: absolute;
   bottom: 100%;
   left: 0;
