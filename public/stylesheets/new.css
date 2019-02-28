@@ -1,7 +1,22 @@
+body {
+    background-image: url("/media/images/palms_pink.jpg");
+    background-size: cover;
+}
+
 .container-fluid {
     position: fixed;
     height: 100%;
     width: 100%;
-    top:30%;
-    left:30%;
+    top:25%;
+    left:5%;
+    color: white;
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
+}
+
+.nav-link {
+  color: white !important;
 }
