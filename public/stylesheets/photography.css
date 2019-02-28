@@ -1,0 +1,30 @@
+.jumbotron {
+    margin-top: 60px;
+    background-image: url("/media/images/door_light_2.jpg");
+    background-size: cover;
+    color: white;
+}
+
+body {
+    background: black;
+    background-size: cover;
+}
+
+.container .my-4 {
+    background-color: white;
+    border-color: white;
+    color: white;
+    width: 62%;
+    margin-left: 0;
+}
+
+img {
+    width:90%;
+    object-fit: cover;
+}
+
+.navbar-toggler {
+    background-color: white;
+    border-color: white;
+    color: white;
+}
