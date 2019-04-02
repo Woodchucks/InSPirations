@@ -1,14 +1,14 @@
 <% include partials/header %>
-<!--<link rel="stylesheet" type="text/css" href="/stylesheets/twitter.css">-->
 <link rel="stylesheet" type="text/css" href="/stylesheets/new.css">
-
-<!--<img class="img-fluid" src="media/images/palms_pink.jpg">-->
 
 <div class="container-fluid">
     <h1>Add new comment</h1>
-    <form action="/photography" method="POST">
-        <input type="text" name="author" placeholder="name"><br>
-        <textarea name="comment" placeholder="your comment"></textarea><br>
-        <button>Submit</button>
+    <form action="/photography/<%= photography._id %>/comments" method="POST">
+        <div class="form-group">
+            <textarea name="comment[comment]" placeholder="your comment"></textarea><br>
+        </div>
+        <div class="form-group">
+            <button>Submit</button>
+        </div>
     </form>
 </div>

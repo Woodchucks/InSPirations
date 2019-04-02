@@ -1,35 +1,41 @@
-var express     = require("express"),
-    app         = express(),
-    path        = require("path"),
-    serveStatic = require('serve-static'),
-    bodyParser  = require("body-parser");
+var express         = require("express"),
+    app             = express(),
+    bodyParser      = require("body-parser"),
+    mongoose        = require("mongoose"),
+    path            = require("path"),
+    serveStatic     = require('serve-static'),
+    passport        = require("passport"),
+    LocalStrategy   = require("passport-local"),
+    User            = require("./models/user"),
+    Comment         = require("./models/comment"),
+    Photography     = require("./models/photography");
     
+var photoRoutes     = require("./routes/photographies"),
+    commentRoutes   = require("./routes/comments"),
+    indexRoutes     = require("./routes/index");
+    
+
+mongoose.connect("mongodb://localhost/inspirations", { useNewUrlParser: true });    
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(serveStatic(path.join(__dirname, "public")));
 
-var PhotographyComments = [];
+app.use(require("express-session")({
+    secret: "Lena is the cutest baby in the world",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-app.get("/", function(req, res){
-    res.render("landing");
+app.use(function(req, res, next){
+   res.locals.currentUser = req.user;
+   next();
 });
-
-app.get("/photography", function(req, res) {
-   res.render("photography"); 
-});
-
-app.post("/photography", function(req, res) {
-   var author = req.body.author;
-   var comment = req.body.comment;
-   var newComment = {author: author, comment: comment}
-   PhotographyComments.push(newComment);
-   res.render("photography");
-});
-
-app.get("/photography/new", function(req, res) {
-   res.render("new"); 
-});
-
+            
 app.get("/about", function(req, res){
    res.render("about");
 });
@@ -38,13 +44,13 @@ app.get("/twitter", function(req, res){
    res.render("twitter");
 });
 
-app.get("/send_eMail", function(req, res) {
-    res.render("/send_eMail");
-})
-
 app.get("/travel", function(req, res){
    res.render("travel");
 });
+
+app.use(indexRoutes);
+app.use(photoRoutes);
+app.use("/photography/:id/comments", commentRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("Server running"); 

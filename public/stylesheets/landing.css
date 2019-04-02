@@ -1,11 +1,10 @@
 .img-fluid {
     max-width: 20%;
     position: fixed;
-    padding: 20px;
 }
 
 .img-fluid_vrtcl {
-    max-width: 50%;
+    max-width: 40%;
     position: fixed;
 }
 
@@ -53,4 +52,8 @@
 
 .no-cssanimations .slideshow li {
 	opacity: 1;
+}
+
+.nav-link {
+  color: black !important;
 }

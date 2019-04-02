@@ -15,43 +15,22 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </p>
             <p>
-                <a class="btn btn-info" href="/photography/new">Add comment</a>
+                <a class="btn btn-info" href="/about">About the Author</a>
             </p>
                
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 col-sm-12">
-            <div class="d-flex flex-column pt-5 justify-content-center">
-                <img src="/media/images/arcade.JPG" />  
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-12">
-            <div class="d-flex flex-column pt-5 justify-content-center">
-                <img src="/media/images/reflection.JPG" />
-            </div>
-        </div>
-        <div class="w-100"></div>
-        <div class="col-lg-6 col-sm-12">
-            <div class="d-flex flex-column pt-5 justify-content-center">
-                <img src="/media/images/tenement_house.JPG" />
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-12">
-            <div class="d-flex flex-column pt-5 justify-content-center">
-                <img src="/media/images/backyard.JPG" />
-            </div>
-        </div>
-        <div class="w-10"></div>
-        <div class="col-lg-6 col-sm-12">
-            <div class="d-flex flex-column py-5 justify-content-center">
-                <img src="/media/images/door.JPG" />
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-12">
-            <div class="d-flex flex-column py-5 justify-content-center">
-                <img src="/media/images/passage_2.JPG" />
-            </div>
-        </div>
+        <% photography.forEach(function(photography){ %>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="d-flex flex-column pt-5 justify-content-center">
+                            <h4><%= photography.name %></h4>
+                            <img src="<%= photography.image %>" />
+                    </div>
+                    <a class="btn btn-info" href="/photography/<%= photography._id %>/comments/new">Comment</a>
+                    <a class="btn btn-primary" href="/photography/<%= photography._id %>/comments">More Info</a>
+                </div>
+        <% }); %>
     </div>
 </div>
+<% include partials/footer %>
