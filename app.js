@@ -2,8 +2,17 @@ var express     = require("express"),
     app         = express(),
     path        = require("path"),
     serveStatic = require('serve-static'),
-    bodyParser  = require("body-parser");
+    bodyParser  = require('body-parser'),
+	mongoose	= require('mongoose');
     
+mongoose.connect('mongodb+srv://Woodchucks:<password>@cluster0-fxq0o.mongodb.net/test?retryWrites=true&w=majority', {
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(() => {
+	console.log('Connected to DB');	
+}).catch(err => {
+	console.log('Error from DB:', err.message);	
+});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(serveStatic(path.join(__dirname, "public")));
@@ -46,6 +55,6 @@ app.get("/travel", function(req, res){
    res.render("travel");
 });
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(3000, process.env.IP, function(){
    console.log("Server running"); 
 });
